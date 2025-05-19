@@ -5,7 +5,7 @@
 ### Overview
 This package contains a range of widgets for use on Frsky Ethos transmitters that leverage a variety of useful RotorFlight telemetry sensors to provide visual and audio information that I felt is valuable when flying RC Helicopters.
 
-** WHILST TESTING OF THESE WIDGETS HAS BEEN EXTENSIVE, USE THIS WIDGETS AT YOUR OWN RISK **
+** WHILST TESTING OF THESE WIDGETS HAS BEEN EXTENSIVE, USE THESE WIDGETS AT YOUR OWN RISK **
 
 X18R/RS or X20 Series
 ![X18RS - Example](https://github.com/user-attachments/assets/62abb8b1-3e1d-4fc6-ad1f-14c1cae40c4f)![X18RS - Summary](https://github.com/user-attachments/assets/a55ec7fe-c21d-4fce-9842-5b052603ddb5)
