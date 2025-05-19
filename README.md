@@ -1,180 +1,130 @@
-## 📋 RF Widgets - Single Model Suite - Requirements & Features
+[![GitHub license](https://img.shields.io/github/license/AERCHeli/AERC_RF_Widgets)](https://github.com/AERCHeli/AERC_RF_Widgets/LICENSE)
+
+# 📋 AERC RotorFlight & Ethos Widgets
 
 ### Overview
+This package contains a range of widgets for use on Frsky Ethos transmitters that leverage a variety of useful RotorFlight telemetry sensors to provide visual and audio information that I felt is valuable when flying RC Helicopters.
 
-** USE AT YOUR OWN RISK **
+** WHILST TESTING OF THESE WIDGETS HAS BEEN EXTENSIVE, USE THIS WIDGETS AT YOUR OWN RISK **
 
-### ✅ Universal Requirements
+X18R/RS or X20 Series
+![X18RS - Example](https://github.com/user-attachments/assets/62abb8b1-3e1d-4fc6-ad1f-14c1cae40c4f)![X18RS - Summary](https://github.com/user-attachments/assets/a55ec7fe-c21d-4fce-9842-5b052603ddb5)
 
-- **RF Suite (rfsuite)** Majority of the scripts make use of RF Suite and the fantastic work that has been done on the project.
-- **Transmitter running the latest version of Ethos**
----
+X14 Series
+![X14RS - Example](https://github.com/user-attachments/assets/7a79ceea-11bb-4cc1-b2f6-3438c06e845c)![X14RS - Summary](https://github.com/user-attachments/assets/b9d72b2a-b0fa-47c1-971f-c5d75828380d)
+
+
+### ✅ Requirements
+
+ 	- RFSuite - These scripts piggy-back off the amazing work that has been done with RF Suite, it is a requirement that RFSuite be installed for the vast majority of these scripts to function. RFSuite - (https://github.com/rotorflight/rotorflight-lua-ethos-suite)
+	- Frsky Transmitter running the latest version (1.6 and above)
+	- I will be creating a supporting Youtube video that covers the installation and configuration of these widgets and discussed them in more detail soon
+	- Whilst not essential, these widgets display better when used in conjunction with the Dark Mode display setting on the transmitter
+	- Supports either FRSky or ELRS Telemetry
+ 	- You don't need to use all of the widgets, they have been designed so they work independantly, although they do work best when worked in conjuction with one another to provide a similar look and feel
+
+	Telemetry Requirements:
+
+  	- In order for the widgets to work correctly, the following telemetry sensors need to be selected in RotorFlight and discovered on the radio:
+  	- Altitude, BEC Voltage, Cell Count, Charge Level, Consumption, Current, ESC Temp, Headspeed, Throttle, Voltage
 
 ### 🔁 Shared Functionality Across All Widgets
 
-- **Telemetry Connection Monitoring**
-	- Tracks telemetry link status and triggers a grace period on reconnect
-	- Grace period includes blinking `--` display before data is shown
+	- Telemetry Connection Monitoring:
+		- Tracks telemetry link status and triggers a grace period on reconnect
+		- Grace period during model connection that displays `--` before data is shown, this allows time for telemetry sensors to update and stabilise prior to displaying values
 
-- **Dynamic Display Rendering**
-	- Dynamic text scaling so the text used will be the largest usable for the widget space
-	- Triple-layer white border which is enabled by default but can be disabled per widget
-	- Defaults to Black Background but there is a toggle option to return it to Ethos background to provide a more 'standard' look
-	- Widgets blink during the configured grace period to allow time for telemetry sensors to stabilise before populating and stop blinking after the grace period
+	- Dynamic Display Rendering:
+		- Dynamic text scaling to ensure text used will be the largest usable for the widget space
+		- Defaults to Black Background with a toggle option to return it to the Ethos native background to provide a more 'standard' look
+ 		- Visual information displayed if telemetry sensors are missing or if configurable switch hasnt been defined
+  		- Configurable suffixs for all telemetry sensors (Can show or disable the telemetry suffix)
+   		- XXL Text On/Off function in each widget to allow it to make use of XXL text if supported in the widget window
 
-- **Audio Alert System**
-	- Toggleable per widget if the widget has audio alerts configured
-	- Alerts disabled during grace period or invalid data, this protects against false alerting when no model is connected or when connecting your model via USB
+	- Audio Alert System:
+		- On/Off functionality per widget if the widget has audio alerts configured
+		- Audio alerts disabled during grace period or invalid data, this protects against false alerting when no model is connected or when connecting your model via USB
+  
+	- Settings Configuration:
+		- Per-widget customization: thresholds, display toggles, audio control, enable/disable certain functionality, summary duration etc
 
-- **Settings Configuration**
-	- Per-widget customization: thresholds, display toggles, audio control, enable/disable certain functionality etc
+	- Summary Duration:
+		- Telemetry widgets will display summary information when the model is disconnected showing the max values received during the flight and a summary of battery values
+ 		- Configurable duration for this to be displayed per widget (default 30 seconds)
+  
+	- Future improvements Planned: 
+		- Configurable background color / text color
+		- Gauge styles instead of just plain numbers for BEC Voltage, ESC Temp & Headspeed
+		- Additional Language support
+ 		- Audio notification when a flight has been logged with a toggle on/off button
+  		- User definable audio callouts (currently only supports no audio callouts or callouts in 10% increments starting at 100%)
 
-- **Fallback Behavior**
-	- Shows "..No Link.." when telemetry is unavailable (no model connected)
-	- Displays `--` during grace or missing data
----
+### Release Notes
 
-### 🎯 Widget Specific Functionality & Requirements
+	- 20/05/2025 - Official V1.0 Release
 
-#### 📦 RF Battery (`rfbatt`)
+*** AERC Layouts ***
 
-- **Requirements**
-	- Requires Charge, Cell Count & Voltage telemetry sensors
-	charge level
-- **Functionality**
-- Displays battery % using charge sensor or voltage fallback
-- Updates ETHOS `Remaining` telemetry sensor
-- Handles **HV LiPos**, **reserve %**, **cell count**
-- Detects and warns for **discharged batteries**
-- Optional battery info block showing pack voltage, cell voltage, and cell count
-
--Future Improvements:
-User definable audio callouts (currently only supports no audio callouts or callouts in 10% increments starting at 100%)
-
-#### ⚡ RF BEC Voltage (`rfbec`)
-- Monitors BEC voltage, color-coded (green/red)
-- Plays alert when voltage drops below configured threshold
-- Uses `becAlert` voltage in volts (e.g., 6.7V)
-- Optional border display
-Requirements: Telemetry sensor named BEC Voltage (Widget wont work if you dont have this sensor configured and available)
-
-Functionality:
-Defaults to ..No Link.. when telemetry isnt connected or after telemetry is lost.
-Displays BEC voltage after 15 seconds of telemetry being active.
-Voltage displayed in .1 decimals and rounds the number based off .2 decimal places (eg. 8.08 will display as 8.1V)
-Border on/off toggle
-Audio on/off toggle
-Configurable BEC Voltage Alert, this value is used to determine the display color of the BEC Voltage value. 
-	If its greater than this value it will display green.
-	If the BEC Voltage drops below this value it will play an audio alert 'BEC Voltage Critical' with haptic feedback
-Throttle Switch assignment - this is tied to audio alerting, the BEC Voltage Critcal alert will only play if you have audio enabled and if the throttle switch is configured with your motor on position
-
-#### 📈 RF ESC Temp (`rfesc`)
-- Displays ESC temperature in °C or °F
-- Audio alerts for hot and critical temperatures
-- Configurable:
-  - Warning / Critical temps
-  - °C/°F unit and suffix
-- Optional suffix toggle and border display
-Defaults to ..No Link.. when telemetry isnt connected or after telemetry is lost.
-Displays BEC voltage after 15 seconds of telemetry being active.
-Voltage displayed in .1 decimals and rounds the number based off .2 decimal places (eg. 8.08 will display as 8.1V)
-Border on/off toggle
-Audio on/off toggle
-Configurable BEC Voltage Alert, this value is used to determine the display color of the BEC Voltage value. 
-	If its greater than this value it will display green.
-	If the BEC Voltage drops below this value it will play an audio alert 'BEC Voltage Critical' with haptic feedback
-Throttle Switch assignment - this is tied to audio alerting, the BEC Voltage Critcal alert will only play if you have audio enabled and if the throttle switch is configured with your motor on position
-
-#### 🛫 RF Flight Counter (`rfcount`)
-- Tracks flights per model using throttle switch timing
-- Saves:
-  - `preset` (baseline flights)
-  - `flightsSincePreset` (session)
-  - `totalFlights` (computed)
-- Logs flight records with date to `flight-log.txt`
-- Configurable:
-  - Throttle switch
-  - Trigger delay
-  - Preset value
-  - Date format
-  Tracks flight counts per model
-Configurable preset flight amount per model so you can easily configure your starting flight value
-Logs each flight you do to a text file on the SD card as Date, Model Name, Total Flight Count so you can track flights per month / year etc 
-Configurable date format for the flight log
-Throttle Switch assignment - Used to determine when to log a flight
-
-Future Improvements
-Audio notification when a flight has been logged with a toggle on/off button.
-Visual blinking during delay period with yellow text.
-
-#### 🖼 RF Model Image (`rfimage`)
-- Displays model-specific image from `/bitmaps/models/<craftName>.bmp`
-- Fallback to default image if not found
-- Loads image once per session using `rfsuite.craftName`
-- Optional border
-
-Future:
-Configurable default image to display to replace the Rotorflight logo when telemetry isnt active or a model image isnt found.
-Defaults to Rotorflight Image when telemetry isnt connected or after telemetry is lost.
-Loads model image from bitmaps\model\"craftname.bmp" - check path. You need to ensure you model image file is placed in this folder and the name matches exactly what Craftname is configured as in Rotorflight (including any spaces).
-Border on/off toggle
-
-#### 🏷 RF Model Name (`rfname`)
-- Displays `rfsuite.session.craftName` as large centered label
-- Blinks `--` during grace period
-- Displays "No Craftname" if name is unavailable
-- Optional border
-RFName:
-Defaults to ..No Link.. when telemetry isnt connected or after telemetry is lost.
-Border on/off toggle
-Displays craftname from Rotorflight Craftname (including any spaces)
-Displays a message in lui of Craftname to alert you if you havent configured a craftname in Rotorflight
-Text size is dynamic and will use the largest available text size based on the widget frame size in use.
-
-#### 🔄 RF RPM (`rfrpm`)
-- Displays headspeed (RPM) from telemetry
-- Color-coded: green above `minRpm`, red below
-- Configurable `minRpm` value
-- Optional border
-Defaults to ..No Link.. when telemetry isnt connected or after telemetry is lost.
-Border on/off toggle
-Configurable MinRPM value - any headspeed below this will show red headspeed text
-Future Improvements:
-If requested - I can include Headspeed Audio callouts at intervals or based on a configurable switch. Just not convinced people would want it?
-
-Future improvements I have planned:
-Configurable background color / text color
-Look using different gauge styles instead of just plain numbers for BEC Voltage, ESC Temp & Headspeed
-Additional Language support
-
-** EXTRA CHECKS / TODO BEFORE LIVE**
-Check Max Widgets
-Temporarily remove summary from battery bar or display Min Percent Sensor telemetry value, and consumed telemetry value on the right
-
-take away borders on all widgets or look at 1pt borders?
-Check for nil errors so add defaults in incase missing, check how bs does it - then re-test in sim with a blank model - look at forcing returns if telem sensors are missing or reporting 0?
-Look at BattSelector and RFSuite for solid ways to use helper libraries for shared functions
-Test layouts on X20/R/S and X18R sims also to ensure all good and to confirm compatibility
-finalise notes for all scripts, prepare github steps, work on readme file formating and getting images and screenshots, check bladescaper's. Create an intro blurb explaining why I have done it and the setup. Also mention youtube video of a full FRSky TX setup from scratch.
-Create Github Repository and upload V1 files and make a 'release'
-Play around with old github and how to easily deploy updates via branches
+	- These layouts will be installed by default when you load the widgets into your scripts directory
+ 	- NOTE: You do not need to use these layouts if you so wish and can use any of the widgets below in your own layout, just keep in mind they have been designed for use with the layout I have designed but will function fine in any widget box provided the size is appropriate
 
 
-Standard Lipo
-Reserve %	Clamp Voltage (V/cell)
-0			3.7
-10			3.75
-20			3.8
-30			3.85
-40			3.9
-50			3.95
+*** 📦 AERC Battery ***
 
-HV Lipo
-Reserve %	Clamp Voltage (V/cell)
-0			3.7
-10			3.76
-20			3.82
-30			3.88
-40			3.94
-50			4
+	- Displays a dynamic battery bar where the green fill dynamically shrinks as the battery is consumed
+		-Note: If you disable the battery info display settings, this widget will run in a small widget window also
+	- Configurable on/off Battery remaining callouts every 10% with haptic feedback and audio alerting when the battery reaches 0%
+ 	- reserve %**, **cell count**
+	- Detects and warns for discharged batteries
+ 	- Configurable to support HV LiPos
+	- Optional battery info block showing pack voltage, cell voltage, cell count and consumed mah
+ 	- Configurable cell count to support edge cases where Cell Count telemetry is not functional (there is currently an on-going issue with some scorpion esc's and Cell Count telemetry)
+
+*** ⚡ AERC BEC Voltage ***
+
+	- Displays BEC Voltage from telemetry
+ 	- Monitors BEC voltage, color-coded (green/red)
+ 	- Configurable alert value, set this approx 0.3v below your BEC operating voltage
+	- Configuable On/Off audio alerting when BEC voltage drops below configured threshold AND the Motor On / Throttle switch has been assigned
+
+*** 📈 AERC ESC Temp ***
+
+	- Displays ESC temperature in °C or °F 
+	- Audio alerts for warning level and critical level temperatures
+	- Configurable warning / critical temp values
+  	- Optional suffix toggle
+
+***🚁 AERC Flights ***
+
+	- Tracks flights per model using throttle switch timing
+	- Configurable (per-model) `preset` value so you can specify an initial flight count, allowing you to determine the starting flight count for each model
+ 	- Configurable `duration` value which is the time in seconds before a flight is recorded (defaults to 25).
+  	- Flights logged to scripts/aerc/flight_log/ into a simple .txt file that can be used to view the number of flights you have done between a certain period of time.	
+   	- Configurable date format for flight log recording
+
+*** 🖼 AERC Model Image ***
+
+	- Displays RotorFlight logo by default when no model connected or if no model image is found
+ 	- Loads model image from `scripts\aerc\images`. You need to ensure you model image file is copied into this folder and the name of the image file matches craftname in Rotorflight (including any spaces).
+  
+*** 🏷 AERC Model Name ***
+
+	- Displays `craftname` from Rotorflight Craftname (including any spaces)
+	- Displays a message in lui of Craftname to alert you if you havent configured a craftname in Rotorflight
+
+*** 🔄 AERC RPM ***
+
+	- Displays headspeed (RPM) from telemetry
+ 	- Configurable `minRpm` value
+	- Color-coded: green above `minRpm`, red below
+
+*** ⚡ AERC Current / Altitude / Throttle ***
+
+ 	- These are simple telemetry display scripts that display Current, Altitude and Throttle values
+  	- Altitude supports both Meters or Ft
+
+*** ⏱ AERC Timer ***
+
+	- Customised timer that provides a the same appearance as other widgets
+ 	- Configurable as a count up or count down timer with configurable on/off audio alerting
+
