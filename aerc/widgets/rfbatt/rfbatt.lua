@@ -27,36 +27,35 @@ local GRACE_BLINK_DELAY = 2 -- Delay before blinking starts after telemetry conn
 local function create()
     local now = os.clock()
     	return {
-        	telemetrySource = nil, -- Telemetry active source
-        	sourceVoltage = nil, -- Battery total voltage telemetry source
-        	sourceCharge = nil,	-- Battery charge level (%) telemetry source
+		telemetrySource = nil, -- Telemetry active source
+		sourceVoltage = nil, -- Battery total voltage telemetry source
+		sourceCharge = nil,	-- Battery charge level (%) telemetry source
 		sourceCellCount = nil, -- Cell count telemetry source
 		sourceConsumption = nil, -- Battery consumption (used mAh) telemetry source
-        	value = 0, -- Calculated battery remaining percentage
-        	voltage = 0, -- Latest battery voltage reading
+		value = 0, -- Calculated battery remaining percentage
+		voltage = 0, -- Latest battery voltage reading
 		cellCount = 0, -- Cell Count reading
-        	cellVoltage = nil, -- Latest cell voltage reading
+		cellVoltage = nil, -- Latest cell voltage reading
 		consumption = 0, -- Latest mAh consumption value
 		lastGoodConsumption = 0, -- Retains values for summary screen
 		lastGoodValue = 0, -- Retains values for summary screen
 		lastGoodVoltage = 0, -- Retains values for summary screen
 		lastGoodCellCount = 0, -- Retains values for summary screen
 		graceUntil = 0, -- Time until grace period ends
-        	doneVoltageCheck = false, -- Whether initial discharged battery voltage check completed
-        	voltageDialogDismissed = false, -- Whether the discharged battery dialog has been dismissed
-        	telemetryReconnectTime = nil, -- Time (os.clock) when telemetry was last reconnected
+		doneVoltageCheck = false, -- Whether initial discharged battery voltage check completed
+		voltageDialogDismissed = false, -- Whether the discharged battery dialog has been dismissed
+		telemetryReconnectTime = nil, -- Time (os.clock) when telemetry was last reconnected
 		hasTelemetryEverBeenActive = false, --flag to track telemetry loss
-        	lastTelemetryActive = false, -- Last known telemetry active state
-        	isDischargedPack = false, -- If true, use voltage-based battery estimation instead of charge telemetry
+		lastTelemetryActive = false, -- Last known telemetry active state
+		isDischargedPack = false, -- If true, use voltage-based battery estimation instead of charge telemetry
 		voltageDetected = false, -- True once voltage > 2V has been seen after telemetry connect
-		cellCountDetected = false, -- True if telemetry provided a valid cell count during session
-        	playedCallouts = {}, -- Table tracking which audio callouts have been played
-        	criticalPlayCount = 0, -- Number of times the critical battery callout has been played
-        	criticalLastPlayTime = 0, -- Last time a critical callout was played (os.clock)
-        	audioReady = false, -- True if audio callouts are allowed (after stabilization delay)
-        	blinkOn = true, -- Blinking state flag
-        	lastBlinkTime = now, -- Last time blink toggled
-        	blinkReadyTime = now + GRACE_BLINK_DELAY, -- Time when blinking should start
+		playedCallouts = {}, -- Table tracking which audio callouts have been played
+		criticalPlayCount = 0, -- Number of times the critical battery callout has been played
+		criticalLastPlayTime = 0, -- Last time a critical callout was played (os.clock)
+		audioReady = false, -- True if audio callouts are allowed (after stabilization delay)
+		blinkOn = true, -- Blinking state flag
+		lastBlinkTime = now, -- Last time blink toggled
+		blinkReadyTime = now + GRACE_BLINK_DELAY, -- Time when blinking should start
 		audioEnabled = true, -- Audio state
 		useDefaultBackground = false, -- Default to Black background
 		useXXLFont = false, -- Enable XXL font
@@ -220,12 +219,6 @@ local function paint(widget)
 	-- Telemetry active but required sensors are missing
 	elseif not widget.sourceVoltage or not widget.sourceCharge or not widget.sourceCellCount or not widget.sourceConsumption then
 		displayText = "Missing Sensor"
-
-	-- Cell count telemetry missing with no fallback
-	elseif widget.cellCount == 0 and not widget.cellCountDetected then
-		displayLine1 = "Cell Count Sensor Faulty"
-		displayLine2 = "Configure fallback in Widget Settings"
-		color = lcd.RGB(255, 165, 0)
 	end
 
 	-- Fallback Text Drawing
@@ -252,6 +245,11 @@ local function paint(widget)
 
 	-- Battery Bar Drawing
 	if widget.value == 0 and not widget.isDischargedPack and not widget.startingValue then
+		lcd.color(lcd.RGB(255, 255, 255))
+		local fallbackText = "--"
+		local font, textW, textH = selectFont(widget, fallbackText, w, h)
+		lcd.font(font)
+		lcd.drawText((w - textW) / 2, (h - textH) / 2, fallbackText, BOLD)
 		return
 	end
 
@@ -377,7 +375,6 @@ local function wakeup(widget)
 		widget.graceUntil = now + GRACE_DELAY
 		widget.voltageDialogDismissed = false
 		widget.isDischargedPack = false
-		widget.cellCountDetected = false
 		widget.voltageDetected = false
 		widget.audioReady = false
 		widget.playedCallouts = {}
@@ -425,11 +422,6 @@ local function wakeup(widget)
 		widget.cellCount = resolvedCount
 	end
 
-	-- Track if a valid cell count has ever been detected
-	if widget.cellCount > 0 then
-		widget.cellCountDetected = true
-	end
-	
 	-- Read voltage
 	local newVoltage = widget.sourceVoltage and widget.sourceVoltage:value()
 	if newVoltage and newVoltage ~= widget.voltage then
@@ -457,6 +449,8 @@ local function wakeup(widget)
 	-- Disable alerts when connected via USB or Battery disconnected
 	if widget.cellCount == 0 or widget.voltage < 2 then
 		widget.audioReady = false
+		widget.value = 0
+		widget.startingValue = nil
 		lcd.invalidate()
 		return
 	end
