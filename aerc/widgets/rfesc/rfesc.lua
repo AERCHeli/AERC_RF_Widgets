@@ -13,10 +13,10 @@
 -- #                                                                       #
 -- #########################################################################
 
--- RF Widgets - Rotorflight & ETHOS
+-- AERC Widgets - Rotorflight & ETHOS
 -- Author: Andy.E (Discord: AJ#9381)
 -- Version: 1.0
--- Widget Name: RF ESC Temp
+-- Widget Name: AERC ESC Temp
 
 -- === Global Settings ===
 local GRACE_DELAY = 15 -- Time (seconds) to blink before showing real ESC temp after telemetry connected
