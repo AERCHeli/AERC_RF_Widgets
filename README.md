@@ -169,5 +169,5 @@ NOTE: You do not need to use these layouts and can use any of the widgets below 
 
 ## ⏱ AERC Timer
 
-- Customised timer that provides a the same appearance as other widgets
+- Customised timer that provides the same appearance as other widgets
 - Configurable as a count up or count down timer with configurable On/Off audio alerting
