@@ -16,7 +16,7 @@
 -- AERC Widgets - Rotorflight & ETHOS
 -- Author: Andy.E (Discord: AJ#9381)
 -- Version: 1.0
--- Widget Name: AERC BEC Voltage
+-- Widget Name: AERC BEC
 
 -- === Global Settings ===
 local GRACE_DELAY = 15 -- Time (seconds) to blink before showing real BEC Voltage after telemetry connected
