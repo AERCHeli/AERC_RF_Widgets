@@ -13,10 +13,10 @@
 -- #                                                                       #
 -- #########################################################################
 
--- RF Widgets - Rotorflight & ETHOS
+-- AERC Widgets - Rotorflight & ETHOS
 -- Author: Andy.E (Discord: AJ#9381)
 -- Version: 1.0
--- Widget Name: RF Model Image
+-- Widget Name: AERC Model Image
 
 -- === Global Settings ===
 local GRACE_DELAY = 10 -- Time (seconds) to blink after telemetry connected
