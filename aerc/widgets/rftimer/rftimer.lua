@@ -13,10 +13,10 @@
 -- #                                                                       #
 -- #########################################################################
 
--- RF Widgets - Rotorflight & ETHOS
+-- AERC Widgets - Rotorflight & ETHOS
 -- Author: Andy.E (Discord: AJ#9381)
 -- Version: 1.0
--- RF Widgets - Rotorflight & ETHOS
+-- Widget Name: AERC Timer
 
 -- === Widget Creation ===
 local function create()
