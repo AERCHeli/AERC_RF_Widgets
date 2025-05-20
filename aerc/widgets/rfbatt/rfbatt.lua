@@ -13,10 +13,10 @@
 -- #                                                                       #
 -- #########################################################################
 
--- RF Widgets - Rotorflight & ETHOS
+-- AERC Widgets - Rotorflight & ETHOS
 -- Author: Andy.E (Discord: AJ#9381)
 -- Version: 1.0
--- Widget Name: RF Battery
+-- Widget Name: AERC Battery
 
 -- === Global Settings ===
 local GRACE_DELAY = 15 -- Time (seconds) to blink before showing battery info after telemetry connected
@@ -26,37 +26,37 @@ local GRACE_BLINK_DELAY = 2 -- Delay before blinking starts after telemetry conn
 -- === Widget Creation ===
 local function create()
     local now = os.clock()
-    return {
-        telemetrySource = nil, -- Telemetry active source
-        sourceVoltage = nil, -- Battery total voltage telemetry source
-        sourceCharge = nil,	-- Battery charge level (%) telemetry source
+    	return {
+        	telemetrySource = nil, -- Telemetry active source
+        	sourceVoltage = nil, -- Battery total voltage telemetry source
+        	sourceCharge = nil,	-- Battery charge level (%) telemetry source
 		sourceCellCount = nil, -- Cell count telemetry source
 		sourceConsumption = nil, -- Battery consumption (used mAh) telemetry source
-        value = 0, -- Calculated battery remaining percentage
-        voltage = 0, -- Latest battery voltage reading
+        	value = 0, -- Calculated battery remaining percentage
+        	voltage = 0, -- Latest battery voltage reading
 		cellCount = 0, -- Cell Count reading
-        cellVoltage = nil, -- Latest cell voltage reading
+        	cellVoltage = nil, -- Latest cell voltage reading
 		consumption = 0, -- Latest mAh consumption value
 		lastGoodConsumption = 0, -- Retains values for summary screen
 		lastGoodValue = 0, -- Retains values for summary screen
 		lastGoodVoltage = 0, -- Retains values for summary screen
 		lastGoodCellCount = 0, -- Retains values for summary screen
 		graceUntil = 0, -- Time until grace period ends
-        doneVoltageCheck = false, -- Whether initial discharged battery voltage check completed
-        voltageDialogDismissed = false, -- Whether the discharged battery dialog has been dismissed
-        telemetryReconnectTime = nil, -- Time (os.clock) when telemetry was last reconnected
+        	doneVoltageCheck = false, -- Whether initial discharged battery voltage check completed
+        	voltageDialogDismissed = false, -- Whether the discharged battery dialog has been dismissed
+        	telemetryReconnectTime = nil, -- Time (os.clock) when telemetry was last reconnected
 		hasTelemetryEverBeenActive = false, --flag to track telemetry loss
-        lastTelemetryActive = false, -- Last known telemetry active state
-        isDischargedPack = false, -- If true, use voltage-based battery estimation instead of charge telemetry
+        	lastTelemetryActive = false, -- Last known telemetry active state
+        	isDischargedPack = false, -- If true, use voltage-based battery estimation instead of charge telemetry
 		voltageDetected = false, -- True once voltage > 2V has been seen after telemetry connect
 		cellCountDetected = false, -- True if telemetry provided a valid cell count during session
-        playedCallouts = {}, -- Table tracking which audio callouts have been played
-        criticalPlayCount = 0, -- Number of times the critical battery callout has been played
-        criticalLastPlayTime = 0, -- Last time a critical callout was played (os.clock)
-        audioReady = false, -- True if audio callouts are allowed (after stabilization delay)
-        blinkOn = true, -- Blinking state flag
-        lastBlinkTime = now, -- Last time blink toggled
-        blinkReadyTime = now + GRACE_BLINK_DELAY, -- Time when blinking should start
+        	playedCallouts = {}, -- Table tracking which audio callouts have been played
+        	criticalPlayCount = 0, -- Number of times the critical battery callout has been played
+        	criticalLastPlayTime = 0, -- Last time a critical callout was played (os.clock)
+        	audioReady = false, -- True if audio callouts are allowed (after stabilization delay)
+        	blinkOn = true, -- Blinking state flag
+        	lastBlinkTime = now, -- Last time blink toggled
+        	blinkReadyTime = now + GRACE_BLINK_DELAY, -- Time when blinking should start
 		audioEnabled = true, -- Audio state
 		useDefaultBackground = false, -- Default to Black background
 		useXXLFont = false, -- Enable XXL font
@@ -104,7 +104,7 @@ end
 local function computeRemaining(widget)
 	local minV = 3.7
 	local maxV = getMaxCellVoltage(widget)
-	local reserve = widget.reservePercent or 20
+	local reserve = widget.reservePercent or 30
 	local perCell = widget.cellVoltage or 0
 	local chargeLevel = widget.sourceCharge and widget.sourceCharge:value() or 0
 
