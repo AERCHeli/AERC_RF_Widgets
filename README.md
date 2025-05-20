@@ -1,7 +1,7 @@
 # 📋 AERC RotorFlight & Ethos Widgets
 
 ## Overview
-This package contains a range of widgets for use on Frsky Ethos transmitters that leverage a variety of useful RotorFlight telemetry sensors to provide visual and audio information that I felt is valuable when flying RC Helicopters.
+This package contains a range of widgets for use on Frsky Ethos transmitters that leverage a variety of useful RotorFlight telemetry sensors to provide visual and audio information that myself and some fellow RC Heli pilots felt is valuable when flying RC Helicopters.
 
 ** WHILST TESTING OF THESE WIDGETS HAS BEEN EXTENSIVE, USE THESE WIDGETS AT YOUR OWN RISK **
 
@@ -126,7 +126,7 @@ NOTE: You do not need to use these layouts and can use any of the widgets below 
 - Optional battery info block showing pack voltage, cell voltage, cell count and consumed mah
 - Configurable cell count to support edge cases where Cell Count telemetry is not functional (there is currently an on-going issue with some scorpion esc's and Cell Count telemetry)
 
-## ⚡ AERC BEC Voltage
+## ⚡ AERC BEC
 
 - Displays BEC Voltage from telemetry
 - Monitors BEC voltage, color-coded (green/red)
