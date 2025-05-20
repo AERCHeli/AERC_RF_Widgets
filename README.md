@@ -63,8 +63,9 @@ Note: You may see missing sensors or other warning messages if you have your Hel
 
 9. Configure switches for those widgets that require it, they will display `No Switch` if they require switches to be assigned
 
-- I'd suggest opening `Configure Widget` for each of the widgets so you can configure them and adjust any options to your own setup / region
-- I will be releasing a youtube video that will cover this is far more detail, so if you're experiencing issues that would be the best point of reference to resolve them.
+I'd suggest opening `Configure Widget` for each of the widgets so you can configure them and adjust any options to your own setup / region
+
+I will be releasing a youtube video that will cover this is far more detail, so if you're experiencing issues that would be the best point of reference to resolve them.
 
 ## 🔁 Shared Functionality Across All Widgets
 
