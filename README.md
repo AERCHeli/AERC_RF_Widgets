@@ -44,6 +44,28 @@ In order for the widgets to work correctly, the following telemetry sensors need
 
 - Altitude, BEC Voltage, Cell Count, Charge Level, Consumption, Current, ESC Temp, Headspeed, Throttle, Voltage
 
+## Installation Instructions:
+
+1. Download the latest release of [AERC_RF_Widgets](https://github.com/AERCHeli/AERC_RF_Widgets)
+2. Extract the .zip file
+3. Connect your Frsky transmitter into your PC and select 'Ethos Suite'
+4. Copy the `aerc` folder you extracted in step 2 onto the transmitters storage under the `scripts\` directory
+6. Unplug the transmitter > press the Disp button > Select the + icon to add a new display and scroll down to the bottom and choose the layout (see further down for the new layouts)
+7. Within the configure screens menu, add all of the newly created AERC Widgets (see below example)
+   
+![Layout Installation](https://github.com/user-attachments/assets/8cec3c1c-f089-4d24-93cf-7033310c144d)
+
+8. Exit out of the configure screens menu and you will be presented with something similar to the below
+
+![Initial Layout](https://github.com/user-attachments/assets/bd380edb-228e-4ac7-af0f-c6dfd3220342)
+
+Note: You may see missing sensors or other warning messages if you have your Heli connected, if you see `Missing Sensor` within any of the widgets, this means that the associated telemetry sensor for the widget isnt available - See Telemetry Requirements above for required telemetry sensors.
+
+9. Configure switches for those widgets that require it, they will display `No Switch` if they require switches to be assigned
+
+I'd suggest opening `Configure Widget` for each of the widgets so you can configure them and adjust any options to your own setup / region
+I will be releasing a youtube video that will cover this is far more detail, so if you're experiencing issues that would be the best point of reference to resolve them.
+
 ## 🔁 Shared Functionality Across All Widgets
 
 ### Telemetry Connection Monitoring:
