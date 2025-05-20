@@ -297,7 +297,7 @@ local function paint(widget)
 		local cellCount = widget.cellCount or 0
 
 		local line1 = string.format("V: %.1f / C: %.2f", voltage, cellVoltage)
-		local line2 = string.format("Used: %d mah (%dS)", consumption, cellCount)
+		local line2 = string.format("U: %d mah (%dS)", consumption, cellCount)
 
 		local font1, w1, h1 = selectFont(widget, line1, availableW, availableH / 2)
 		local font2, w2, h2 = selectFont(widget, line2, availableW, availableH / 2)
