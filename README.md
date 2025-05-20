@@ -77,7 +77,7 @@ In order for the widgets to work correctly, the following telemetry sensors need
 
 ## AERC Layouts
 
-### These layouts will be installed by default when you load the widgets into your scripts directory
+These layouts will be installed by default when you load the widgets into your scripts directory
 
 ### X18R / RS and X20 Series Layouts:
 
