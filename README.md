@@ -72,7 +72,7 @@ In order for the widgets to work correctly, the following telemetry sensors need
 - Configurable background color / text color
 - Gauge styles instead of just plain numbers for BEC Voltage, ESC Temp & Headspeed
 - Additional Language support
-- Audio notification when a flight has been logged with a toggle on/off button
+- Audio notification when a flight has been logged with a toggle On/Off button
 - User definable audio callouts (currently only supports no audio callouts or callouts in 10% increments starting at 100%)
 
 ## AERC Layouts
@@ -93,7 +93,7 @@ NOTE: You do not need to use these layouts and can use any of the widgets below 
 
 - Displays a dynamic battery bar where the green fill dynamically shrinks as the battery is consumed
 	- Note: If you disable the battery info display settings, this widget will run in a small widget window also
-- Configurable on/off Battery remaining callouts every 10% with haptic feedback and audio alerting when the battery reaches 0%
+- Configurable On/Off Battery remaining callouts every 10% with haptic feedback and audio alerting when the battery reaches 0%
 - Configurable reserve % so you can fly to 0% on the battery display but land at a safe pack voltage, default is 30% which is approx 3.80v per cell
 - Detects and warns for discharged batteries
 - Configurable to support HV LiPos
@@ -112,11 +112,10 @@ NOTE: You do not need to use these layouts and can use any of the widgets below 
 - Displays ESC temperature in °C or °F 
 - Audio alerts for warning level and critical level temperatures
 - Configurable warning / critical temp values
-- Optional suffix toggle
 
 ## 🚁 AERC Flights
 
-- Tracks flights per model using throttle switch timing
+- Tracks flights per model
 - Configurable (per-model) `preset` value so you can specify an initial flight count, allowing you to determine the starting flight count for each model
 - Configurable `duration` value which is the time in seconds before a flight is recorded (defaults to 25).
 - Flights logged to scripts/aerc/flight_log/ into a simple .txt file that can be used to view the number of flights you have done between a certain period of time.	
@@ -125,7 +124,7 @@ NOTE: You do not need to use these layouts and can use any of the widgets below 
 ## 📸 AERC Model Image
 
 - Displays RotorFlight logo by default when no model connected or if no model image is found
-- Loads model image from `scripts\aerc\images`. You need to ensure you model image file is copied into this folder and the name of the image file matches craftname in Rotorflight (including any spaces).
+- Loads model image from `scripts\aerc\images`. You need to ensure you model image file is copied into this folder and the name of the image file matches craftname in Rotorflight (including any spaces). Also ensure the model image file is in .BMP format.
 
 ## 🏷 AERC Model Name
 
@@ -135,14 +134,14 @@ NOTE: You do not need to use these layouts and can use any of the widgets below 
 ## 🔄 AERC RPM
 
 - Displays headspeed (RPM) from telemetry
-- Color text display logic: green above `minRpm`, red below
+- Color text display logic: green above minRpm value or red if below it
 
 ## ⚡ AERC Current / Altitude / Throttle
 
 - These are simple telemetry display widgets that display Current, Altitude and Throttle telemetry values
-- Altitude supports both Meters or Ft
+- Altitude supports both M or Ft
 
 ## ⏱ AERC Timer
 
 - Customised timer that provides a the same appearance as other widgets
-- Configurable as a count up or count down timer with configurable on/off audio alerting
+- Configurable as a count up or count down timer with configurable On/Off audio alerting
