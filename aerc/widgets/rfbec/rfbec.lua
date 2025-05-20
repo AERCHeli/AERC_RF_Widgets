@@ -13,16 +13,16 @@
 -- #                                                                       #
 -- #########################################################################
 
--- RF Widgets - Rotorflight & ETHOS
+-- AERC Widgets - Rotorflight & ETHOS
 -- Author: Andy.E (Discord: AJ#9381)
 -- Version: 1.0
--- Widget Name: RF BEC Voltage
+-- Widget Name: AERC BEC Voltage
 
 -- === Global Settings ===
 local GRACE_DELAY = 15 -- Time (seconds) to blink before showing real BEC Voltage after telemetry connected
 local ALERT_INTERVAL = 10 -- Minimum seconds between repeating alerts
 local BLINK_INTERVAL = 0.5 -- Blinking toggle interval (seconds)
-local GRACE_BLINK_DELAY = 2	-- Delay before blinking starts after telemetry connect
+local GRACE_BLINK_DELAY = 2 -- Delay before blinking starts after telemetry connect
 
 -- === Widget Creation ===
 local function create()
