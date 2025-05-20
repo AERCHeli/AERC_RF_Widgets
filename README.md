@@ -9,7 +9,7 @@ This package contains a range of widgets for use on Frsky Ethos transmitters tha
 
 - 20/05/2025 - Official V1.0 Release
 
-### X18R/RS and X20 Series:
+## X18R/RS and X20 Series:
 
 ### Main Display when telemetry connected:
 
@@ -19,7 +19,7 @@ This package contains a range of widgets for use on Frsky Ethos transmitters tha
 
 ![X18RS - Summary](https://github.com/user-attachments/assets/4c01946e-cb1c-4a8c-be81-8279f794ceed)
 
-### X14 Series:
+## X14 Series:
 
 ### Main Display when telemetry connected:
 
@@ -40,7 +40,7 @@ This package contains a range of widgets for use on Frsky Ethos transmitters tha
 
 ## Telemetry Requirements:
 
-### In order for the widgets to work correctly, the following telemetry sensors need to be selected in RotorFlight and discovered on the radio:
+In order for the widgets to work correctly, the following telemetry sensors need to be selected in RotorFlight and discovered on the radio:
 
 - Altitude, BEC Voltage, Cell Count, Charge Level, Consumption, Current, ESC Temp, Headspeed, Throttle, Voltage
 
@@ -75,7 +75,7 @@ This package contains a range of widgets for use on Frsky Ethos transmitters tha
 - Audio notification when a flight has been logged with a toggle on/off button
 - User definable audio callouts (currently only supports no audio callouts or callouts in 10% increments starting at 100%)
 
-## 📐 AERC Layouts
+## AERC Layouts
 
 ### These layouts will be installed by default when you load the widgets into your scripts directory
 
