@@ -47,9 +47,12 @@ In order for the widgets to work correctly, the following telemetry sensors need
 ## Installation Instructions:
 
 1. Download the latest release of [AERC_RF_Widgets](https://github.com/AERCHeli/AERC_RF_Widgets)
-2. Extract the .zip file
-3. Connect your Frsky transmitter into your PC and select 'Ethos Suite'
-4. Copy the `aerc` folder you extracted in step 2 onto the transmitters storage under the `scripts\` directory
+
+![Release](https://github.com/user-attachments/assets/9f446267-d96a-4bd8-9d69-0a8ea0e49f1f)
+
+3. Extract the .zip file
+4. Connect your Frsky transmitter into your PC and select 'Ethos Suite'
+5. Copy the `aerc` folder you extracted in step 2 onto the transmitters storage under the `scripts\` directory
 6. Unplug the transmitter > press the Disp button > Select the + icon to add a new display and scroll down to the bottom and choose the layout (see further down for the new layouts)
 7. Within the configure screens menu, add all of the newly created AERC Widgets (see below example)
    
