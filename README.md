@@ -1,5 +1,7 @@
 # 📋 AERC RotorFlight & Ethos Widgets
 
+NOTE: I am no longer actively developing these widgets, all of the functionality within my widget suite has now been ported into RFSuite Dashboards. I will continue to address any bugs that may occur with future releases, but my time is now focused on developing and improving RF Suite.
+
 ## Overview
 This package contains a range of widgets for use on Frsky Ethos transmitters that leverage a variety of useful RotorFlight telemetry sensors to provide visual and audio information that myself and some fellow RC Heli pilots felt is valuable when flying RC Helicopters.
 
