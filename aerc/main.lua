@@ -105,6 +105,23 @@ local function init()
       {x=624, y=321, w=168, h=106},		-- 10: Sensor 6
     }})
   end
+  
+	-- Layout for FrSky X18S/X20S Series (480x320)
+	if radio == "X18S" then
+	  system.registerLayout({key = "AERC4", widgets={
+		{x=0,   y=56,  w=144, h=72},   -- 0: Model Name
+		{x=0,   y=136, w=144, h=92},   -- 1: Model Image
+		{x=0,   y=232, w=68,  h=64},   -- 2: Timer
+		{x=76,  y=232, w=70,  h=64},   -- 3: Flights
+		{x=152, y=56,  w=328, h=72},   -- 4: Battery
+		{x=152, y=136, w=106, h=76},   -- 5: Sensor 1
+		{x=264, y=136, w=106, h=76},   -- 6: Sensor 2
+		{x=376, y=136, w=104, h=76},   -- 7: Sensor 3
+		{x=152, y=218, w=106, h=78},   -- 8: Sensor 4
+		{x=264, y=218, w=106, h=78},   -- 9: Sensor 5
+		{x=376, y=218, w=104, h=78},   -- 10: Sensor 6
+	  }})
+  end
 end
 
 return { init = init }
